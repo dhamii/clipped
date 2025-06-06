@@ -43,7 +43,7 @@ class ClipController extends Controller
             $clipwhole = Clip::where('clip', $clip)->firstOrFail();
             $clips = $clipwhole->clipcontent;
             $clip = $clipwhole->clip;
+            $clipwhole->delete();
             return view('viewnotes', compact('clips'));
         }
-        
 }
