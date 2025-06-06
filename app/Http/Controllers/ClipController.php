@@ -25,15 +25,15 @@ class ClipController extends Controller
     }
         public function viewContent($clip){
             $clip = Clip::where('clip', $clip)->firstOrFail();
-            return view('clipcontent');
+            return view('clipcontent', compact('clip'));
         }
 
         public function saveContent(Request $request, $clip){
-            dd($clip);
+            // dd($clip);
             $textcontent = $request->clipcontent;
-            $clip = Clip::where('clip', $clip);
+            $clip = Clip::where('clip', $clip)->update(['clipcontent' => $textcontent]);
 
             // dd($clip);
-            dd($clip);
+            // dd($clip);
         }
 }

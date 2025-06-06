@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/li/{$clipurl}/save" method="POST">
+    <form action="{{url('/li/'. $clip->clip .'/save')}}" method="POST">
     @csrf
     <textarea name="clipcontent">Goes in here</textarea>
     <button>Submit</button>
