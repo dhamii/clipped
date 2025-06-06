@@ -24,3 +24,4 @@ Route::post('/li/{clipurl}', [ClipController::class, 'index']);
 Route::get('/create', [ClipController::class , 'viewCreate']);
 Route::get('/li/{clipurl}', [ClipController::class, 'viewContent']);
 Route::post('/li/{clipurl}/save', [ClipController::class, 'savecontent']);
+Route::get('/{clip}', [ClipController::class, 'viewClip']);

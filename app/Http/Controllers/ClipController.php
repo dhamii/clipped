@@ -11,7 +11,9 @@ class ClipController extends Controller
         $clipurl = $request->clipurl;
 
         // dd($clipurl);
-        $store = Clip::create(['clip' => $clipurl]);
+        $store = Clip::create([
+            'clip' => $clipurl
+        ]);
 
         $clip = $store->clip;
         // dd($clip);
@@ -36,4 +38,12 @@ class ClipController extends Controller
             // dd($clip);
             return 'created';
         }
+        //
+        public function viewClip($clip){
+            $clipwhole = Clip::where('clip', $clip)->firstOrFail();
+            $clips = $clipwhole->clipcontent;
+            $clip = $clipwhole->clip;
+            return view('viewnotes', compact('clips'));
+        }
+        
 }
