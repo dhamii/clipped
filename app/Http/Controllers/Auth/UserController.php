@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class UserController extends Controller
 {
     public function signUp(Request $request)
     {
@@ -28,12 +28,12 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(['email' => $incomingFields['emaill'], 'password' => $incomingFields['passwprd']])){
+        if(auth()->attempt(['email' => $incomingFields['email'], 'password' => $incomingFields['passwprd']])){
             $request->session()->regenerate();
             return redirect('/');
         };
         
-        return back()->withNotify(['error', 'Invalid crediential']);
+        return back()->withNotify(['error' =>'Invalid crediential']);
     }
 
     public function logout()
