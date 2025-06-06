@@ -15,7 +15,7 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-r from-indigo-100 to-purple-100 flex items-center justify-center min-h-screen">
+<body class="bg-gradient-to-r from-indigo-100 to-purple-100 flex justify-center min-h-screen">
   <div class="bg-white p-8 rounded-2xl shadow-lg max-w-xl w-full fade-in-up">
     <h1 class="text-3xl font-semibold mb-4 text-center text-indigo-600">Here is your clip</h1>
     <div class="text-gray-800 text-lg whitespace-pre-wrap p-4 bg-gray-100 rounded-lg">{{ $clips }}</div>

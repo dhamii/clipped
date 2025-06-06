@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clip;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ClipController extends Controller
 {
     public function index(Request $request, $clipurl){
+        try{
         $clipurl = $request->clipurl;
 
         $store = Clip::create([
@@ -16,6 +18,12 @@ class ClipController extends Controller
 
         $clip = $store->clip;
         return redirect('/fill/' . $clip);
+    }
+    catch(QueryException $e){
+        if($e->getCode() == 23000){
+            return back()->withNotify(['errord' => "Try another URL"]);
+        }
+    }
     }
     public function viewCreate(){
         return view('createclip');
