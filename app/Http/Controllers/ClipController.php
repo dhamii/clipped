@@ -13,9 +13,9 @@ class ClipController extends Controller
         // dd($clipurl);
         $store = Clip::create(['clip' => $clipurl]);
 
-
-        dd($store);
-        // return redirect('/li' . $clip);
+        $clip = $store->clip;
+        // dd($clip);
+        return redirect('/li/' . $clip);
     }
 
     public function viewCreate(){
@@ -34,6 +34,6 @@ class ClipController extends Controller
             $clip = Clip::where('clip', $clip)->update(['clipcontent' => $textcontent]);
 
             // dd($clip);
-            // dd($clip);
+            return 'created';
         }
 }
