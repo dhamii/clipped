@@ -15,9 +15,8 @@ class ClipController extends Controller
         ]);
 
         $clip = $store->clip;
-        return redirect('/li/' . $clip);
+        return redirect('/fill/' . $clip);
     }
-
     public function viewCreate(){
         return view('createclip');
     }
@@ -29,9 +28,8 @@ class ClipController extends Controller
         public function saveContent(Request $request, $clip){
             $textcontent = $request->clipcontent;
             $clip = Clip::where('clip', $clip)->update(['clipcontent' => $textcontent]);
-            return 'created';
+            return view('createdview');
         }
-        //
         public function viewClip($clip){
             $clipwhole = Clip::where('clip', $clip)->firstOrFail();
             $clips = $clipwhole->clipcontent;
