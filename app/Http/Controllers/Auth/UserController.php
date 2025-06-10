@@ -33,7 +33,7 @@ class UserController extends Controller
             return redirect('/');
         };
         
-        return back()->withNotify(['error' =>'Invalid crediential']);
+        return back()->withErrors(['error' =>'Invalid crediential']);
     }
 
     public function logout()
