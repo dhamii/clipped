@@ -26,6 +26,7 @@ class ClipController extends Controller
     }
     }
     public function viewCreate(){
+        // dd('Create a clip');
         return view('createclip');
     }
         public function viewContent($clip){
@@ -43,6 +44,7 @@ class ClipController extends Controller
             $clips = $clipwhole->clipcontent;
             $clip = $clipwhole->clip;
             $clipwhole->delete();
+            // \DB::table('clips')->where('clip', $clip)->delete();
             return view('viewnotes', compact('clips'));
         }
 }

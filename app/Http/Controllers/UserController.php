@@ -10,13 +10,14 @@ class UserController extends Controller
     public function signUp(Request $request)
     {
         $incomingFields = $request->validate([
-            'fullname' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);
         
-        $incomingFields['password'] = bcrypt($incomingFields['password']);
-        $store =User::create($incomingFields);
+        $incomingFields['password'] = bcrypt(value: $incomingFields['password']);
+        // dd($incomingFields);
+        $store = User::create($incomingFields);
         auth()->login($store);
         return redirect('/')->withNotify(['Success' => 'SignUp successful']);
     }
@@ -28,8 +29,9 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(['email' => $incomingFields['email'], 'password' => $incomingFields['passwprd']])){
+        if(auth()->attempt(['email' => $incomingFields['email'], 'password' => $incomingFields['password']])){
             $request->session()->regenerate();
+            // dd('Logged in successfully');
             return redirect('/');
         };
         
@@ -39,6 +41,7 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
+        // dd('Logged out successfully');
         return redirect('/');
     }
 }
