@@ -21,7 +21,7 @@ class ClipController extends Controller
     }
     catch(QueryException $e){
         if($e->getCode() == 23000){
-            return back()->withNotify(['errord' => "Try another URL"]);
+            return back()->with('errord', "Try another URL");
         }
     }
     }

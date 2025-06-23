@@ -1,6 +1,7 @@
 <?php
 
 // use App\Http\Controllers\UserController;
+use App\Http\Controllers\ForgottenPassword;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\ClipController;
@@ -29,6 +30,8 @@ Route::get('/', function () {
     return view('landing');
 });
 Route::post('/login', [UserController::class, 'login'])->name('login.post');
+Route::get('/forgot-password', [ForgottenPassword::class, 'viewForgotPassword'])->name('forgotpassword');
+Route::get('/reset-password/{token}', [ForgottenPassword::class, 'viewResetPassword'])->name('resetpassword');
 Route::post('/register', [UserController::class, 'signUp'])->name('signup.post');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/clip', [ClipController::class , 'viewCreate']);

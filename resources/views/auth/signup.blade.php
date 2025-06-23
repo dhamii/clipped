@@ -2,7 +2,7 @@
 
 @extends('layouts.app')
 
-
+@section('title', 'Signup')
 @section('content')
     <form action="/register" class="login-form" method="post">
         @csrf

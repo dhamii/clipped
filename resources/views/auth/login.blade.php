@@ -13,6 +13,12 @@
             <div class="icon-div"><i class="bi bi-lock"></i></div>
             <input type="password" name="password" placeholder="Password">
         </div>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        
+        @endif
         <a href="#"><div>Forgot Password</div></a>
         <button>Login</button>
         <h3>Don't have an account? <span><a href="/signup">Sign up</a></span></h3>
